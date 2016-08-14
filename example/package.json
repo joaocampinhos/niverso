@@ -18,6 +18,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "example-relation": "github:joaocampinhos/relations#example",
     "express": "^4.14.0",
+    "niverso": "github:joaocampinhos/niverso",
     "nodemon": "^1.9.2",
     "rimraf": "^2.5.4"
   },
