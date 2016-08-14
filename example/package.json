@@ -1,0 +1,32 @@
+{
+  "name": "example-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp && nodemon dist/index.js --exec babel-node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-syntax-flow": "^6.8.0",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-plugin-transform-niverso": "github:joaocampinhos/babel-plugin-transform-niverso",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "example-relation": "github:joaocampinhos/relations#example",
+    "express": "^4.14.0",
+    "nodemon": "^1.9.2",
+    "rimraf": "^2.5.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-es2015": "^6.9.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-flowcheck": "^0.3.1",
+    "gulp-flowtype": "^0.4.9"
+  }
+}
