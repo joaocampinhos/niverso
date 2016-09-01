@@ -67,6 +67,7 @@ exports.start = (app) => {
     for (let key in routes[m]) {
       app[m](key, (req, res) => {
         let v = req.get('X-Version') || relation.root;
+        let m = req.get('X-Mode')    || 0;
         if (v[0] === '@') {
           // exact version
           const _v = v.substring(1);
@@ -83,11 +84,12 @@ exports.start = (app) => {
           // find version > v
           let possible_relations = [];
           for (let f in routes[m][key]) {
-            if (isC(v, f)) possible_relations.push(f);
+            if (isC(v, f, m)) possible_relations.push(f);
           }
           if (possible_relations.length) {
             const updated_version = bigR(possible_relations);
             if (updated_version) {
+              console.log(updated_version);
               const node = routes[m][key][updated_version];
               res.set('X-Version', updated_version);
               return res.json(node(req, res));
@@ -107,8 +109,8 @@ exports.start = (app) => {
           while (i--) {
             const node = routes[m][key][path[i]];
             if (node) {
-              res.set('X-Version', path[i]);
-              return res.json(node(req, res));
+                res.set('X-Version', path[i]);
+                return res.json(node(req, res));
             }
           }
         }
@@ -118,7 +120,8 @@ exports.start = (app) => {
   }
 };
 
-function isC(v1, v2) {
+function isC(v1, v2, mode) {
+  console.log(mode);
   const v1l = relation.pathToRoot(v1);
   const v2l = relation.pathToRoot(v2);
   const v2t = relation.typeToRoot(v2);
@@ -129,7 +132,7 @@ function isC(v1, v2) {
   for (let i = 0; i < idx; i++) {
     if (v2t[i] > big) big = v2t[i];
   }
-  if (big >= 20) return false;
+  if (big >= mode) return false;
   return true;
 }
 

@@ -17,7 +17,7 @@ gulp.task('bab', () =>
 );
 
 gulp.task('flow', ['bab'], (cb) =>
-  exec('flow check-contents < _tmp/index.js', function (err, stdout, stderr) {
+  exec('./node_modules/.bin/flow check-contents < _tmp/index.js', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);

@@ -25,6 +25,7 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-preset-es2015": "^6.9.0",
+    "flow-bin": "^0.31.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-flowcheck": "^0.3.1",
